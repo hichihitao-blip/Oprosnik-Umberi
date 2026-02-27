@@ -1,0 +1,278 @@
+/* ========== ОБНУЛЕНИЕ ========== */
+* {
+    box-sizing: border-box;
+    font-family: 'hayate', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ========== ПОДКЛЮЧЕНИЕ ШРИФТА ========== */
+@font-face {
+    font-family: 'hayate';
+    src: url('fonts/hayate-regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* ========== ОСНОВНЫЕ СТИЛИ ========== */
+body {
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-image: url('images/geo_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* ========== ХЕДЕР ========== */
+.header-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+    margin: 0 auto;
+}
+
+.main-menu {
+    display: flex;
+    min-width: 59.3vw;   
+    height: 12vw;
+    background-image: url('images/main_menu.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.small-menu {
+    display: flex;
+    min-width: 9.1vw;
+    aspect-ratio: 220 / 110;
+    background-image: url('images/small_menu.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+}
+
+/* ========== ОСНОВНОЙ КОНТЕЙНЕР ========== */
+.main-content {
+    display: flex;
+    flex: 1;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px;
+    gap: clamp(20px, 4vw, 50px);
+}
+
+/* ========== ЛЕВАЯ ПАНЕЛЬ ========== */
+.info-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.menu-text {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2vh, 25px);
+}
+
+.menu-item {
+    color: white;
+    font-size: clamp(16px, 2.5vw, 24px);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.stats {
+    display: flex;
+    gap: clamp(15px, 3vw, 35px);
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: clamp(8px, 1.5vw, 15px) clamp(15px, 2.5vw, 30px);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-value {
+    color: #FFD700;
+    font-size: clamp(18px, 3vw, 28px);
+    font-weight: bold;
+}
+
+/* ========== ПРАВАЯ ПАНЕЛЬ ========== */
+.task-panel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.task-title {
+    color: white;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: bold;
+    margin-bottom: 35px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+}
+
+/* ========== СЕТКА ОТВЕТОВ ========== */
+.answers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(12px, 2.5vw, 25px);
+    width: 100%;
+}
+
+.answer-btn {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 60px;
+    padding: clamp(14px, 2.5vw, 20px) clamp(12px, 2vw, 25px);
+    color: white;
+    font-size: clamp(16px, 2.8vw, 24px);
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.answer-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.answer-btn:active {
+    transform: translateY(0);
+}
+
+.answer-btn.correct {
+    background: rgba(16, 185, 129, 0.7);
+    border-color: #10B981;
+}
+
+.answer-btn.incorrect {
+    background: rgba(239, 68, 68, 0.7);
+    border-color: #EF4444;
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 1024px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .info-panel {
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .menu-text {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .stats {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-nav {
+        gap: clamp(15px, 3vw, 30px);
+    }
+    
+    .main-menu {
+        width: clamp(200px, 50vw, 400px);
+        height: clamp(50px, 7vw, 80px);
+    }
+    
+    .small-menu {
+        width: clamp(40px, 7vw, 60px);
+        height: clamp(40px, 7vw, 60px);
+    }
+    
+    .info-panel {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .menu-text {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .stats {
+        justify-content: center;
+    }
+    
+    .answers-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .answer-btn {
+        white-space: normal;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-nav {
+        gap: 10px;
+    }
+    
+    .main-menu {
+        width: clamp(150px, 60vw, 250px);
+        height: clamp(40px, 8vw, 60px);
+    }
+    
+    .small-menu {
+        width: clamp(35px, 8vw, 45px);
+        height: clamp(35px, 8vw, 45px);
+    }
+    
+    .task-title {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    
+    .stat-item {
+        padding: 5px 12px;
+    }
+    
+    .stat-value {
+        font-size: 16px;
+    }
+    
+    .menu-item {
+        font-size: 14px;
+    }
+}
